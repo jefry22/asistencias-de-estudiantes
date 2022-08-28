@@ -5,25 +5,6 @@ btnEnviar.addEventListener("click", function (e) {
   saveEstudents();
 });
 
-/**
- <div class="profile">
-          <img
-            src="https://images.pexels.com/photos/1326946/pexels-photo-1326946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-          />
-
-          <div class="profile-info">
-            <p class="name">Maria Luisa</p>
-            <p class="lastname">Valdivia Laves</p>
-            <i class="fa-solid fa-check btn-asisted"></i>
-          </div>
-        </div>
- */
-const checkList = document.createElement("i");
-checkList.classList.add("fa-solid");
-checkList.classList.add("fa-check");
-checkList.classList.add("btn-asisted");
-// checkList.classList.add('inactive');
 
 function saveEstudents() {
   const nombre = document.querySelector("#txtName").value;
@@ -36,6 +17,12 @@ function saveEstudents() {
     "src",
     "https://images.pexels.com/photos/1326946/pexels-photo-1326946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   );
+
+  const checkList = document.createElement("i");
+  checkList.classList.add("fa-solid");
+  checkList.classList.add("fa-check");
+  checkList.classList.add("btn-asisted");
+
 
   const profile = document.createElement("div");
   profile.classList.add("profile");
@@ -54,18 +41,16 @@ function saveEstudents() {
 
   conteinerGrid.appendChild(profile);
 
+  listcheck(checkList);
+
   formContainer.reset();
 }
 
-checkList.addEventListener('click',listcheck)
 
-function listcheck(){
-  const actived = checkList.classList.toggle('inactive');
-
-  if(actived){
-    checkList.style.color='#2ecc71';
-  }else{
-    checkList.style.color='#000000';
-  }
-    
+function listcheck(listcheck) {
+  listcheck.addEventListener('click',function(){
+    listcheck.classList.toggle('inactive') 
+    ? listcheck.style.color='#2ecc71'
+    : listcheck.style.color='#34495e';
+  });
 }
